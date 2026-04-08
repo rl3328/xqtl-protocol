@@ -71,8 +71,6 @@ To build a list of TADB-enhanced cis windows, we start with the cis window of ea
 
 
 
-
-Our LD reference panel is generated from ADSP GCAD non-Hispanic white samples. Missing variants are mean imputed before correlations are calculated between variants. The cyvcf2 package is used to calculate dosage while applying a minor allele frequency threshold of 0.05%, a minor allele count threshold of 5, and a missingness threshold of 5%.
 #### Molecular Phenotypes (Step 2)
 ##### A.  RNA-seq expression
 
@@ -1017,6 +1015,7 @@ sos run pipeline/twas_ctwas.ipynb twas \
    --cwd output/twas --name test \
    --gwas_meta_data data/twas/gwas_meta_test.tsv \
    --ld_meta_data reference_data/ADSP_R4_EUR/ld_meta_file.tsv \
+   --ld_reference_sample_size 17000 \
    --regions data/twas/EUR_LD_blocks.bed \
    --xqtl_meta_data data/twas/mwe_twas_pipeline_test_small.tsv \
    --xqtl_type_table data/twas/data_type_table.txt \
@@ -1036,6 +1035,7 @@ sos run pipeline/twas_ctwas.ipynb ctwas \
    --cwd output/twas --name test \
    --gwas_meta_data data/twas/gwas_meta_test.tsv \
    --ld_meta_data data/ld_meta_file_with_bim.tsv \
+   --ld_reference_sample_size 17000 \
    --xqtl_meta_data data/twas/mwe_twas_pipeline_test_small.tsv \
    --twas_weight_cutoff 0 \
    --chrom 11 \
@@ -1103,6 +1103,7 @@ sos run pipeline/colocboost.ipynb colocboost \
 
 
 
+#### gwas_meta_multi.tsv
 ### 8. Enrichment and Validation
 
 #### Chromosome-Specific Enrichment Analysis of Annotations Using Block Jackknife
